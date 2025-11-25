@@ -214,13 +214,13 @@ export default function UploadPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="font-inter font-medium">Challenge</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger data-testid="select-challenge">
                             <SelectValue placeholder="Select a challenge" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent position="popper" sideOffset={5}>
+                        <SelectContent>
                           {challenges?.map((challenge) => (
                             <SelectItem key={challenge.id} value={challenge.id}>
                               {challenge.emoji} {challenge.title}
