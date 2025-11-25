@@ -220,7 +220,7 @@ export default function UploadPage() {
                             <SelectValue placeholder="Select a challenge" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent>
+                        <SelectContent position="popper" sideOffset={5}>
                           {challenges?.map((challenge) => (
                             <SelectItem key={challenge.id} value={challenge.id}>
                               {challenge.emoji} {challenge.title}
