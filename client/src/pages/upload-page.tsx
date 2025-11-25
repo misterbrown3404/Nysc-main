@@ -219,16 +219,16 @@ export default function UploadPage() {
                           <SelectValue placeholder="Select a challenge" />
                         </SelectTrigger>
                         <SelectContent className="max-h-[300px]">
-                          {isLoading ? (
-                            <div className="p-2 text-sm text-muted-foreground">Loading challenges...</div>
-                          ) : !challenges || challenges.length === 0 ? (
-                            <div className="p-2 text-sm text-muted-foreground">No challenges available</div>
-                          ) : (
+                          {challenges && challenges.length > 0 ? (
                             challenges.map((challenge) => (
                               <SelectItem key={challenge.id} value={challenge.id}>
                                 {challenge.emoji} {challenge.title}
                               </SelectItem>
                             ))
+                          ) : (
+                            <SelectItem value="no-challenges" disabled>
+                              {isLoading ? "Loading challenges..." : "No challenges available"}
+                            </SelectItem>
                           )}
                         </SelectContent>
                       </Select>
