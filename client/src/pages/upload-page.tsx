@@ -215,17 +215,21 @@ export default function UploadPage() {
                     <FormItem>
                       <FormLabel className="font-inter font-medium">Challenge</FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger data-testid="select-challenge">
-                            <SelectValue placeholder="Select a challenge" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {challenges?.map((challenge) => (
-                            <SelectItem key={challenge.id} value={challenge.id}>
-                              {challenge.emoji} {challenge.title}
-                            </SelectItem>
-                          ))}
+                        <SelectTrigger data-testid="select-challenge">
+                          <SelectValue placeholder="Select a challenge" />
+                        </SelectTrigger>
+                        <SelectContent className="max-h-[300px]">
+                          {isLoading ? (
+                            <div className="p-2 text-sm text-muted-foreground">Loading challenges...</div>
+                          ) : !challenges || challenges.length === 0 ? (
+                            <div className="p-2 text-sm text-muted-foreground">No challenges available</div>
+                          ) : (
+                            challenges.map((challenge) => (
+                              <SelectItem key={challenge.id} value={challenge.id}>
+                                {challenge.emoji} {challenge.title}
+                              </SelectItem>
+                            ))
+                          )}
                         </SelectContent>
                       </Select>
                       <FormMessage />
