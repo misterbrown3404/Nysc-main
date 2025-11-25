@@ -45,6 +45,11 @@ export default function UploadPage() {
     queryKey: ["/api/challenges"],
   });
 
+  // Debug logging
+  console.log('Challenges data:', challenges);
+  console.log('Is loading:', isLoading);
+  console.log('Challenges length:', challenges?.length);
+
   const existingUser = getUserIdentity();
 
   const form = useForm<UploadFormData>({
@@ -218,7 +223,7 @@ export default function UploadPage() {
                         <SelectTrigger data-testid="select-challenge">
                           <SelectValue placeholder="Select a challenge" />
                         </SelectTrigger>
-                        <SelectContent className="max-h-[300px]">
+                        <SelectContent>
                           {challenges && challenges.length > 0 ? (
                             challenges.map((challenge) => (
                               <SelectItem key={challenge.id} value={challenge.id}>
